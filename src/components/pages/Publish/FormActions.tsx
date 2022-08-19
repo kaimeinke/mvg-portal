@@ -16,21 +16,22 @@ export default function FormActions({
   const { ocean, account } = useOcean()
 
   return (
-    <footer className={styles.actions}>
-      <Button
-        style="primary"
-        type="submit"
-        disabled={!ocean || !account || !isValid || status === 'empty'}
-      >
-        Submit
-      </Button>
-
-      {status !== 'empty' && (
-        <Button style="text" size="small" onClick={resetFormAndClearStorage}>
-          Reset Form
+    <footer className={styles.actionsFooter}>
+      <div className={styles.actions}>
+        <Button
+          style="primary"
+          type="submit"
+          disabled={!ocean || !account || !isValid || status === 'empty'}
+        >
+          Submit
         </Button>
-      )}
 
+        {status !== 'empty' && (
+          <Button style="text" size="small" onClick={resetFormAndClearStorage}>
+            Reset Form
+          </Button>
+        )}
+      </div>
       <Alert state="info" text={walletDisclaimer} />
     </footer>
   )
