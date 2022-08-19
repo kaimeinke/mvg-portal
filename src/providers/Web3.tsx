@@ -23,7 +23,6 @@ import { getEnsName } from '../utils/ens'
 import { UserBalance } from '../@types/TokenBalance'
 import { getOceanBalance } from '../utils/ocean'
 import useNetworkMetadata from '../hooks/useNetworkMetadata'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 interface Web3ProviderValue {
   web3: Web3
@@ -36,7 +35,6 @@ interface Web3ProviderValue {
   balanceLoading: boolean
   networkId: number
   chainId: number
-  isChainIdAllowed: boolean
   networkDisplayName: string
   networkData: EthereumListsChain
   block: number
@@ -93,8 +91,6 @@ const refreshInterval = 20000 // 20 sec.
 const Web3Context = createContext({} as Web3ProviderValue)
 
 function Web3Provider({ children }: { children: ReactNode }): ReactElement {
-  const { appConfig } = useSiteMetadata()
-  const { chainIdsSupported } = appConfig
   const { networksList } = useNetworkMetadata()
 
   const [web3, setWeb3] = useState<Web3>()
@@ -103,7 +99,6 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   const [web3ProviderInfo, setWeb3ProviderInfo] = useState<IProviderInfo>()
   const [networkId, setNetworkId] = useState<number>()
   const [chainId, setChainId] = useState<number>()
-  const [isChainIdAllowed, setIsChainIdAllowed] = useState<boolean>()
   const [networkDisplayName, setNetworkDisplayName] = useState<string>()
   const [networkData, setNetworkData] = useState<EthereumListsChain>()
   const [block, setBlock] = useState<number>()
@@ -307,13 +302,6 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   }, [web3Provider])
 
   // -----------------------------------
-  // Check if the selected chainId is included in the allowed list
-  // -----------------------------------
-  useEffect(() => {
-    setIsChainIdAllowed(chainIdsSupported.includes(chainId))
-  }, [chainId, chainIdsSupported])
-
-  // -----------------------------------
   // Logout helper
   // -----------------------------------
   async function logout() {
@@ -372,7 +360,6 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
         balanceLoading,
         networkId,
         chainId,
-        isChainIdAllowed,
         networkDisplayName,
         networkData,
         block,

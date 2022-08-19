@@ -11,8 +11,7 @@ export default function PageTemplateAssetDetails({
 }: {
   uri: string
 }): ReactElement {
-  const { ddo, title, error, isInPurgatory, loading, isAssetNetworkAllowed } =
-    useAsset()
+  const { ddo, title, error, isInPurgatory, loading } = useAsset()
   const [pageTitle, setPageTitle] = useState<string>()
 
   useEffect(() => {
@@ -24,19 +23,15 @@ export default function PageTemplateAssetDetails({
     setPageTitle(isInPurgatory ? '' : title)
   }, [ddo, error, isInPurgatory, title])
 
-  return ddo && pageTitle !== undefined && !loading && isAssetNetworkAllowed ? (
+  return ddo && pageTitle !== undefined && !loading ? (
     <Page title={pageTitle} uri={uri}>
       <Router basepath="/asset">
         <AssetContent path=":did" />
       </Router>
     </Page>
-  ) : error || !isAssetNetworkAllowed ? (
+  ) : error ? (
     <Page title={pageTitle} noPageHeader uri={uri}>
-      <Alert
-        title={pageTitle}
-        text={error || 'This asset was published in an unsupported network'}
-        state="error"
-      />
+      <Alert title={pageTitle} text={error} state="error" />
     </Page>
   ) : (
     <Page title={undefined} uri={uri}>
