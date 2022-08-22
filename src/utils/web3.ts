@@ -97,6 +97,9 @@ export function getNetworkDisplayName(
     case 2021001:
       displayName = 'CATENA-X Testnet'
       break
+    case 9000:
+      displayName = 'Evmos Testnet'
+      break
     default:
       displayName = data
         ? `${data.chain} ${getNetworkType(data) === 'mainnet' ? '' : data.name}`
