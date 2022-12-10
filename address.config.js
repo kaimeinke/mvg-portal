@@ -32,14 +32,20 @@ module.exports = {
         'did:op:1ea7A7F278669CfF1D0dD6CA608dd763fCcf8EE6',
         'did:op:5A3E99a1d126F2546589bCF5f6cB541ab87Aad83',
         'did:op:F4910E1B433Ad21140683c04D25309f08d6E1946',
-        'did:op:0a7cEc708Dd76f82fE2a510135Ab1C3BAaEC1E88'
+        'did:op:0a7cEc708Dd76f82fE2a510135Ab1C3BAaEC1E88',
+        'did:op:Dd9c865F4070837017e0E7Ae238BAe5A841d2725',
+        'did:op:F7a11c32bf252626453e77Cf24948462518F1d3e'
       ]
     },
     {
       title: 'Health, Finance, Business Analytics, Energy and more',
       assets: [
         'did:op:048BdCeba7f43620302Cd7e593451e40f9e194F5',
-        'did:op:700b5C28396B4ceA3450A8DFA6297DF7c40C240f'
+        'did:op:700b5C28396B4ceA3450A8DFA6297DF7c40C240f',
+        'did:op:805407e9699A00819C3912bdc9c406E33a1BFbB4',
+        'did:op:9F6ED572720f1738e4760D5930FA04327bCba61F',
+        'did:op:960b599a70abfa60EC39dE900071ba750B8f807b',
+        'did:op:34a6236F6D55618F527382733EBb3259F001f53D'
       ]
     }
   ]
